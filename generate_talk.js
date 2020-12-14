@@ -1,6 +1,6 @@
-function getRandomIndex(array) {
-  randomIndex = Math.floor(Math.random() * array.length)
-  return randomIndex
+function getRandomElement(array) {
+  const randomIndex = Math.floor(Math.random() * array.length)
+  return array[randomIndex]
 }
 
 
@@ -19,26 +19,16 @@ function generateTalk(target) {
     return '請選擇一個職業'
   }
   if (target === 'engineer') {
-    talk += '工程師'
-    randomIndex = getRandomIndex(task.engineer)
-    talk += task.engineer[randomIndex]
+    talk = talk.concat('工程師', getRandomElement(task.engineer))
   }
-
   if (target === 'designer') {
-    talk += '設計師'
-    randomIndex = getRandomIndex(task.designer)
-    talk += task.designer[randomIndex]
+    talk = talk.concat('設計師', getRandomElement(task.designer))
   }
-
   if (target === 'entrepreneur') {
-    talk += '創業家'
-    randomIndex = getRandomIndex(task.entrepreneur)
-    talk += task.entrepreneur[randomIndex]
+    talk = talk.concat('創業家', getRandomElement(task.entrepreneur))
   }
-
-  talk += phrase[getRandomIndex(phrase)]
   //return
-  return talk
+  return talk += getRandomElement(phrase)
 }
 
 generateTalk()
